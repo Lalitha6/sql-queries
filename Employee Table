@@ -1,0 +1,15 @@
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    age INT CHECK (age > 0),
+    salary DECIMAL(10, 2) CHECK (salary > 0),
+    dept_id INT,
+    hire_date DATE CHECK (hire_date <= CURRENT_DATE)
+);
+
+INSERT INTO employee (emp_id, age, salary, dept_id, hire_date)
+VALUES
+    (1, 25, 50000.00, 101, '2022-01-15'),
+    (2, 30, 65000.00, 102, '2021-06-10'),
+    (3, 28, 60000.00, 103, '2020-03-20'),
+    (4, 35, 75000.00, 104, '2019-12-05'),
+    (5, 40, 80000.00, 105, '2018-07-30');
