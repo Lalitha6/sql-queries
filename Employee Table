@@ -82,3 +82,63 @@ WHERE hire_date LIKE '-01-%';
 --Select employee hired before 2019
 SELECT * FROM Employee
 WHERE hire_date < '2019-01-01';
+
+--Select employees hired on or after march 1, 2021
+SELECT * FROM Employee
+WHERE hire_date >= '2021-03-01';
+
+--Select sum of salary of all employees
+SELECT SUM(salary) AS total_salary
+FROM Employee;
+
+--Select average salary of all employees
+SELECT AVG(salary) AS average_salary
+FROM Employee;
+
+--Select minimum salary from the employee table
+SELECT MIN(salary) AS minimum_salary
+FROM Employee;
+
+--Select number of employees in each dept
+SELECT dept_id, COUNT(*) AS num_employees
+FROM Employee
+GROUP BY dept_id;
+
+--Select the average salary of employees in each department
+SELECT dept_id, AVG(salary) AS avg_salary
+FROM Employee
+GROUP BY dept_id;
+
+--Select the total salary by each department
+SELECT dept_id, SUM(salary) AS total_salary
+FROM Employee
+GROUP BY dept_id;
+
+--Select the average age of employees in each department
+SELECT dept_id, AVG(age) AS average_age
+FROM Employee
+GROUP BY dept_id;
+
+--Select the number of employees hired in each year
+SELECT (hire_date) AS hire_year, COUNT(*) AS num_employees
+FROM Employee
+GROUP BY (hire_date);
+
+--Select the highest salary in each department
+SELECT dept_id, MAX(salary) AS highest_salary
+FROM Employee
+GROUP BY(salary);
+
+--Select the department with the highest average salary
+SELECT D.dept_name, AVG(E.salary) AS avg_salary
+FROM Employee E
+JOIN Department D ON E.dept_id = D.dept_id
+GROUP BY D.dept_name
+ORDER BY avg_salary DESC
+LIMIT 1;
+
+--Select departments with more than 2 employees
+
+
+
+
