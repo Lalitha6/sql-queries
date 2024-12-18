@@ -1,3 +1,4 @@
+--Create employee table
 CREATE TABLE employee (
     emp_id INT PRIMARY KEY,
     name VARCHAR(50),
@@ -14,3 +15,70 @@ VALUES
     (3, 'Bob Brown', 45, 80000.00, 1, '2018-02-12'),
     (4, 'Alice Blue', 25, 45000.00, 3, '2021-03-22'),
     (5, 'Charlie P', 29, 50000.00, 2, '2019-12-01');
+
+--Select only name and salary columns
+SELECT name, salary
+FROM Employee;
+
+--Select employees who are older than 30
+SELECT *
+FROM Employee
+WHERE age > 30;
+
+--Create department table
+CREATE TABLE Department(
+  dept_id INT(10),
+  dept_name VARCHAR(30)
+);
+INSERT INTO Department(dept_id, dept_name)
+VALUES 
+    (1, 'IT'),
+    (2, 'HR'),
+    (3, 'Finance'),
+    (4, 'Marketing');
+
+--Create project table
+CREATE TABLE Project_Table(
+  project_id INT(10),
+  name VARCHAR(30),
+  dept_id INT(10)
+);
+INSERT INTO Project_Table(project_id, name, dept_id)
+VALUES
+  (1, 'Project Alpha', 1),
+  (2, 'Project Beta', 2),
+  (3, 'Project Gamma', 1),
+  (4, 'Project Delta', 3),
+  (5, 'Project Epsilon', 4);
+
+--Select employees whose names start with J
+SELECT * FROM Employee
+WHERE name LIKE 'J%';
+
+--Select employees whose name ends with e
+SELECT * FROM Employee
+WHERE name LIKE '%e';
+
+--Select employees whose names contains a
+SELECT * FROM Employee
+WHERE name LIKE '%a%;
+
+--Select employees whose names are exactly 9 characters long
+SELECT * FROM Employee
+WHERE LENGTH(name) = 9;
+
+--Select employee whose name has 'o' as the second character
+SELECT * FROM Employee
+WHERE name LIKE '_o%';
+
+--Select employee whose hire date is 2020
+SELECT * FROM Employee
+WHERE hire_date LIKE '2020%';
+
+--Select employee hired in january of any year
+SELECT * FROM Employee
+WHERE hire_date LIKE '-01-%';
+
+--Select employee hired before 2019
+SELECT * FROM Employee
+WHERE hire_date < '2019-01-01';
