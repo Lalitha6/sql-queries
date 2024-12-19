@@ -133,6 +133,60 @@ GROUP BY department_id;
 SELECT department_name
 
 --Select departments with more than 2 employees
+SELECT department_id, COUNT(*) AS Employee_count
+FROM Employee
+GROUP BY department_id, 
+HAVING count(*) > 2;
+
+--Select departments with an average salary greater than 55000
+SELECT department_id, AVG(salary) AS avg_salary
+FROM Employee
+GROUP BY department_id
+HAVING avg(salary) > 55000;
+
+--Select years with more than 1 employee hired
+SELECT hire_date AS hire_year, COUNT(*) AS employee_count
+FROM Employee
+GROUP BY hire_date
+HAVING COUNT(*) > 1;
+
+--Select departments with a total salary expenses less than 100000
+SELECT department_id, SUM(salary) AS salary_expenses
+FROM Employee
+GROUP BY department_id
+HAVING SUM(salary) < 100000;
+
+--Select departments with the maximum salary above 75000
+SELECT department_id, MAX(salary) AS max_salary
+FROM Employee
+GROUP BY department_id
+HAVING MAX(salary) > 75000;
+
+--Select employees ordered by their salary in ascending order
+SELECT * FROM Employee
+ORDER BY salary ASC;
+
+--Select employees ordered by their salary in descending order
+SELECT * FROM Employee
+ORDER BY salary DESC;
+
+--Select employees ordered by their hire date in ascending order
+SELECT * FROM Employee
+ORDER BY hire_date ASC;
+
+--Select employees by their department and then by their salary
+SELECT * FROM Employee
+ORDER BY department_id, salary;
+
+--Select departments ordered by their total salary of their employees
+SELECT department_id, SUM(salary) AS total_salary
+FROM Employee
+GROUP BY department_id
+ORDER BY total_salary DESC;
+
+--Select employee names along with their department names
+
+
 
 
 
