@@ -11,7 +11,7 @@ CREATE TABLE employee (
 INSERT INTO employee (emp_id, name, age, salary, dept_id, hire_date)
 VALUES
     (1, 'John Doe', 28, 50000.00, 1, '2020-01-15'),
-    (2, 'Jane Smith', 34, 60000.00, 2, '2023-07-23'),  -- Corrected hire date
+    (2, 'Jane Smith', 34, 60000.00, 2, '2023-07-23'),  
     (3, 'Bob Brown', 45, 80000.00, 1, '2018-02-12'),
     (4, 'Alice Blue', 25, 45000.00, 3, '2021-03-22'),
     (5, 'Charlie P', 29, 50000.00, 2, '2019-12-01');
@@ -125,17 +125,12 @@ FROM Employee
 GROUP BY (hire_date);
 
 --Select the highest salary in each department
-SELECT dept_id, MAX(salary) AS highest_salary
+SELECT department_id, MAX(salary) AS highest_salary
 FROM Employee
-GROUP BY(salary);
+GROUP BY department_id;
 
 --Select the department with the highest average salary
-SELECT D.dept_name, AVG(E.salary) AS avg_salary
-FROM Employee E
-JOIN Department D ON E.dept_id = D.dept_id
-GROUP BY D.dept_name
-ORDER BY avg_salary DESC
-LIMIT 1;
+SELECT department_name
 
 --Select departments with more than 2 employees
 
