@@ -184,7 +184,59 @@ FROM Employee
 GROUP BY department_id
 ORDER BY total_salary DESC;
 
---Select employee names along with their department names
+--Select the employee with the highest salary
+SELECT emp_id, name, salary
+FROM Employee
+WHERE salary = (
+SELECT MAX(salary) FROM Employee
+);
+
+--Select the employees whose salary is above average salary
+SELECT emp_id, name, salary
+FROM Employee
+WHERE salary > (
+SELECT AVG(salary) FROM Employee
+);
+
+--Select the second highest salary from the employee table
+SELECT MAX(salary) AS second_highest_salary
+FROM Employee
+WHERE salary < (
+SELECT MAX(salary) FROM Employee
+);
+
+--Select the department with most employees
+SELECT department_id, COUNT(*) AS employee_count
+FROM Employee
+WHERE department_id = (
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+)
+GROUP BY department_id;
+
+--Select employees who earn more than the average salary of their department
+SELECT E.employee_id, E.employee_name, E.salary, E.department_id
+FROM Employee E
+WHERE E.salary > (
+    SELECT AVG(salary)
+    FROM Employee
+    WHERE department_id = E.department_id
+);
+
+--Select the nth highest salary(3rd highest salary)
+SELECT MAX(salary) AS third_highest_salary
+FROM Employee
+WHERE salary NOT IN (
+    SELECT salary
+    FROM Employee
+    ORDER BY salary DESC
+    LIMIT 2
+);
+
+
 
 
 
